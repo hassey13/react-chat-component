@@ -12,10 +12,6 @@ class Messages extends React.Component {
 
   componentDidMount(){
     this.props.socket.on('chat message', this.messageRecieve)
-
-    // socket.on('user:left', this._userLeft);
-    // socket.on('change:name', this._userChangedName);
-    // ajskldf??
   }
 
   messageRecieve( message ) {
