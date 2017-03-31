@@ -5,22 +5,21 @@ var http = require('http').Server(app)
 var io = require('socket.io')(http)
 
 
-// app.use(express.static(path.join(__dirname + '/css')));
-// app.use(express.static('./static/style.css'))
-// app.use(express.static('./bundle.js'))
+const users = []
 
-app.use("/static/style.css", express.static(__dirname + '/static/style.css'));
-app.use("/bundle.js", express.static(__dirname + '/bundle.js'));
-
-app.get('/', function(req, res){
-  res.sendfile('index.html')
-});
+function readUsers() {
+  users.map( (user,i) => console.log(`Users connected: ${user}`) )
+}
 
 io.on('connection', function(socket){
-  console.log('CONNECTED')
-})
 
-io.on('connection', function(socket){
+  socket.on('link', function(msg){
+    io.emit('link', msg)
+    console.log(msg + ' connected!')
+    users.push(msg)
+    readUsers()
+  })
+
   socket.on('chat message', function(msg){
     io.emit('chat message', msg)
     console.log('name: ' + msg.sender + ' - message: ' + msg.content)
@@ -28,11 +27,11 @@ io.on('connection', function(socket){
 })
 
 // start the server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const env = process.env.NODE_ENV || 'production';
 http.listen(port, err => {
   if (err) {
     return console.error(err);
   }
   console.info(`Server running on http://localhost:${port} [${env}]`);
-});
+})

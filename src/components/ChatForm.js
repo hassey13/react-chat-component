@@ -2,9 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {addMessage} from '../actions/index'
 
-const io = require('socket.io-client')
-const socket = io()
-
 class ChatForm extends React.Component {
   constructor(props){
     super(props)
@@ -19,9 +16,8 @@ class ChatForm extends React.Component {
 
   handleSubmit(event){
     event.preventDefault()
-    // this.props.addMessage( this.state )
-    socket.emit('chat message', this.state )
-    this.setState({content: '', sender: 'message-self'})
+    this.props.socket.emit('chat message', this.state )
+    this.setState({content: '', sender: 'name-here'})
   }
 
   render() {
