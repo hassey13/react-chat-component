@@ -1,5 +1,3 @@
-// import { searchAdapter } from '../adapters/searchAdapter'
-
 const ADD_MESSAGE = 'ADD_MESSAGE'
 
 export const addMessage = (message) => {

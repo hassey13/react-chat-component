@@ -1,8 +1,17 @@
 div {
   padding: 20px;
 }
+
 .padding {
   padding: 100px;
+}
+
+.connection-box {
+  border: 1px solid black;
+  border-radius: 20px;
+  width: 300px;
+  padding: 45px 10px 45px 20px;
+
 }
 
 .chat-box {

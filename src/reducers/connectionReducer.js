@@ -1,8 +1,8 @@
-export default function socketReducer(state=[], action){
+export default function messagesReducer(state=[], action){
 
   switch (action.type) {
 
-    case 'ADD_SOCKET_CONNECTION':
+    case 'ADD_CONNECTION':
       return action.payload
 
     default:

@@ -1,10 +1,8 @@
-// import { searchAdapter } from '../adapters/searchAdapter'
+const ADD_SOCKET_CONNECTION = 'ADD_SOCKET_CONNECTION'
 
-const ADD_SERVER_CONNECTION = 'ADD_SERVER_CONNECTION'
-
-export const addServerConnection = (socket) => {
+export const addSocketConnection = (socket) => {
   return {
-    type: ADD_SERVER_CONNECTION,
+    type: ADD_SOCKET_CONNECTION,
     payload: socket
   }
 }

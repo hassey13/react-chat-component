@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 
 import Messages from './Messages'
 import ChatForm from './ChatForm'
+import ConnectForm from './ConnectForm'
 
-import { addServerConnection } from '../actions/socketActions'
+import { addSocketConnection } from '../actions/socketActions'
 
 import '../../public/stylesheets/style.css'
 
@@ -14,7 +15,7 @@ class ChatApp extends Component {
 
   componentWillMount(){
     const socket = io.connect('http://localhost:4000')
-    this.props.addServerConnection(socket)
+    this.props.addSocketConnection(socket)
   }
 
   render() {
@@ -24,11 +25,11 @@ class ChatApp extends Component {
       return (<div>Connecting...</div>)
     }
 
-    this.props.socket.emit('link', "Ehass" )
-
     return (
       <div>
-        <h1>Chat App!</h1>
+        <h1>Welcome to Chat App!</h1>
+        <br/>
+        < ConnectForm socket={ socket } />
 
         <div className="padding"></div>
         <div className="padding"></div>
@@ -55,8 +56,8 @@ function mapStateToProps (state){
 
 function mapDispatchToProps(dispatch){
   return {
-    addServerConnection: function(socket) {
-      let action = addServerConnection(socket)
+    addSocketConnection: function(socket) {
+      let action = addSocketConnection(socket)
       dispatch( action )
     }
   }
