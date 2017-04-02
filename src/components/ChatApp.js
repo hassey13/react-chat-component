@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Messages from './Messages'
 import ChatForm from './ChatForm'
 import ConnectForm from './ConnectForm'
+import WhosOnline from './WhosOnline'
 
 import { addSocketConnection } from '../actions/socketActions'
 
@@ -38,6 +39,8 @@ class ChatApp extends Component {
         <div className="padding"></div>
         <div className="padding"></div>
         <div className="padding"></div>
+
+        <WhosOnline socket={ socket } />
 
         <div className="chat-box">
           < Messages socket={ socket } />

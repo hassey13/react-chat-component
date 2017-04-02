@@ -10,21 +10,23 @@ var users = []
 function readUsers() {
   if (users.length === 0) {
     console.log("There are no connected users!")
+    return false
   }
-  users.map( (user,i) => console.log(`Users connected: ${user}`) )
+  console.log("Below are the connected users:")
+  users.map( (user,i) => console.log(`${user}`) )
 }
 
 io.on('connection', function(socket){
 
-  socket.on('link', function(msg){
-    io.emit('link', msg)
+  socket.on('userOnline', function(msg){
+    io.emit('userOnline', msg)
     console.log(msg.name + ' connected!')
     users.push(msg.name)
     readUsers()
   })
 
-  socket.on('disconnectUser', function(msg){
-    io.emit('disconnectUser', msg)
+  socket.on('userOffline', function(msg){
+    io.emit('userOffline', msg)
     console.log(msg.name + ' disconnected!')
     users = users.filter( name => msg.name !== name )
     readUsers()

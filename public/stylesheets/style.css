@@ -6,11 +6,22 @@ div {
   padding: 100px;
 }
 
+.whos-online-container {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  width: 400px;
+  height: 400px;
+  background-color: #DBDADB;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
 .connection-box {
   border: 1px solid black;
   border-radius: 20px;
   width: 300px;
-  padding: 45px 10px 45px 20px;
+  padding: 45px;
 
 }
 

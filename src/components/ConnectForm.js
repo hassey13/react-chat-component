@@ -10,18 +10,18 @@ class ConnectForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.socket.on('link', function() {
+    this.props.socket.on('userOnline', function() {
       console.log('connected')
     })
 
-    this.props.socket.on('disconnectUser', function() {
+    this.props.socket.on('userOffline', function() {
       console.log('disconnected')
     })
   }
 
   componentWillUnmount() {
     if ( this.state.connected) {
-      this.props.socket.emit('disconnectUser', {name: this.state.name} )
+      this.props.socket.emit('userOffline', { name: this.state.name } )
       this.setState( { connected: false } )
     }
   }
@@ -34,12 +34,12 @@ class ConnectForm extends React.Component {
 
   handleSubmit(event){
     event.preventDefault()
-    this.props.socket.emit('link', this.state )
+    this.props.socket.emit('userOnline', this.state )
     this.setState( { connected: true } )
   }
 
   handleClick(){
-    this.props.socket.emit('disconnectUser', this.state )
+    this.props.socket.emit('userOffline', this.state )
     this.setState( { connected: false } )
   }
 
