@@ -12,13 +12,14 @@ class WhosOnline extends React.Component {
   }
 
   render() {
-    const users = this.props.users
+    const users = ["Eric","Alanna"]
 
     return (
       <div className="whos-online-container">
-
-        { users.map( (user, i) => <OnlineUserCard key={ i } user={ user } /> )}
-
+        <h5>Online</h5>
+        <div>
+          { users.map( (user, i) => <OnlineUserCard key={ i } user={ user } /> )}
+        </div>
       </div>
     )
   }

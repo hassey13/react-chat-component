@@ -1,5 +1,10 @@
-div {
-  padding: 20px;
+* {
+  font-family: Tahoma;
+}
+
+h5 {
+  text-align: center;
+  font-family: cursive;
 }
 
 .padding {
@@ -8,14 +13,30 @@ div {
 
 .whos-online-container {
   position: fixed;
+  padding: 0px 20px 20px 20px;
   right: 15px;
   top: 15px;
-  width: 400px;
+  width: 200px;
   height: 400px;
-  background-color: #DBDADB;
+  background-color: #fff;
   border: 1px solid black;
-  border-radius: 20px;
+  border-radius: 5px;
 }
+
+.user-card {
+  padding: 10px 10px 10px 10px;
+  width: 180px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.user-card:hover {
+  background-color: #D7FFD4;
+  cursor: pointer;
+  border: 1px solid #72FF17;
+}
+
 
 .connection-box {
   border: 1px solid black;
@@ -31,10 +52,14 @@ div {
   bottom: 15px;
   width: 400px;
   height: 400px;
+  padding: 5px;
   background-color: #DBDADB;
   border: 1px solid black;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+  -webkit-box-shadow: 0px 0px 14px 9px rgba(220,220,220,1);
+  -moz-box-shadow: 0px 0px 14px 9px rgba(220,220,220,1);
+  box-shadow: 0px 0px 14px 9px rgba(220,220,220,1);
 }
 
 .message-box {
@@ -42,7 +67,7 @@ div {
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   height: 325px;
-  padding: 10px;
+  padding: 5px;
 }
 
 .message-box li {
@@ -69,15 +94,19 @@ div {
 
 .input-box {
   background-color: white;
-  padding: 5px;
-  height: 35px;
+  padding: 20px 20px 19px 35px;
+  height: 25px;
   bottom: 0px;
+  border-top: 1px solid #DCDCDC;
 }
 
 .input-box input {
-  width: 80%;
+  height: 25px;
+  width: 75%;
 }
 
 .input-box button {
-  width: 15%;
+  border-top: 1px solid #DCDCDC;
+  height: 30px;
+  width: 20%;
 }

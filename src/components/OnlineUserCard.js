@@ -6,7 +6,7 @@ export default class OnlineUserCard extends React.Component {
     const user = this.props.user
     return (
       <div className='user-card'>
-        <p>{ user.name }</p>
+        <span className='font'>{ user }</span>
       </div>
     )
   }
