@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addConnection } from '../actions/connectionActions'
 import { addCurrentUser, removeCurrentUser } from '../actions/userActions'
 
 class ConnectForm extends React.Component {
@@ -61,18 +60,8 @@ class ConnectForm extends React.Component {
   }
 }
 
-function mapStateToProps (state){
-  return {
-    connection: state.connection
-  }
-}
-
 function mapDispatchToProps(dispatch){
   return {
-    addConnection: function(message){
-      let action = addConnection(message)
-      dispatch( action )
-    },
     addCurrentUser: function(user){
       let action = addCurrentUser(user)
       dispatch( action )
@@ -84,4 +73,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )( ConnectForm )
+export default connect( null, mapDispatchToProps )( ConnectForm )
