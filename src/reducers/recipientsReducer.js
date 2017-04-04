@@ -1,14 +1,11 @@
-export default function usersReducer(state=[], action){
+export default function recipientReducer(state=[], action){
 
   switch (action.type) {
 
-    case 'ADD_USERS':
-      return [ ...state , ...action.payload]
-
-    case 'ADD_USER':
+    case 'ADD_RECIPIENT':
       return [ ...state , action.payload]
 
-    case 'REMOVE_USER':
+    case 'REMOVE_RECIPIENT':
       let new_state = state.filter( key => ( key.name !== action.payload.name ))
       return new_state
 

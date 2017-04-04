@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import Messages from './Messages'
-import ChatForm from './ChatForm'
+import MessagesContainer from './MessagesContainer'
 import ConnectForm from './ConnectForm'
 import WhosOnline from './WhosOnline'
 
+import { addUsers } from '../actions/usersActions'
 import { addSocketConnection } from '../actions/socketActions'
 
 import '../../public/stylesheets/style.css'
@@ -14,8 +14,18 @@ const io = require('socket.io-client')
 
 class ChatApp extends Component {
 
-  componentWillMount(){
+  componentDidMount(){
     const socket = io.connect('http://localhost:4000')
+    const token = Math.floor(Math.random() * 1000000000) + 1
+
+    socket.emit('sync', {token: token})
+
+    socket.on('sync', (msg) => {
+      if ( msg.token === token ) {
+        this.props.addUsers(msg.users)
+      }
+    })
+
     this.props.addSocketConnection(socket)
   }
 
@@ -29,7 +39,7 @@ class ChatApp extends Component {
     return (
       <div>
         <h1>Welcome to Chat App!</h1>
-        <br/>
+
         < ConnectForm socket={ socket } />
 
         <div className="padding"></div>
@@ -42,10 +52,8 @@ class ChatApp extends Component {
 
         <WhosOnline socket={ socket } />
 
-        <div className="chat-box">
-          < Messages socket={ socket } />
-          < ChatForm socket={ socket } />
-        </div>
+        <MessagesContainer socket={ socket } />
+
       </div>
     )
   }
@@ -61,6 +69,10 @@ function mapDispatchToProps(dispatch){
   return {
     addSocketConnection: function(socket) {
       let action = addSocketConnection(socket)
+      dispatch( action )
+    },
+    addUsers: function(users) {
+      let action = addUsers(users)
       dispatch( action )
     }
   }

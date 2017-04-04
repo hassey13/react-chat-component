@@ -2,13 +2,29 @@
   font-family: Tahoma;
 }
 
+div {
+  box-sizing: border-box;
+}
+
 h5 {
   text-align: center;
   font-family: cursive;
 }
 
+ul {
+  margin: 0 0 0 0 !important;
+}
+
 .padding {
   padding: 100px;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.invisible {
+  display: none !important;
 }
 
 .whos-online-container {
@@ -16,16 +32,60 @@ h5 {
   padding: 0px 20px 20px 20px;
   right: 15px;
   top: 15px;
-  width: 200px;
-  height: 400px;
+  width: 90px;
   background-color: #fff;
-  border: 1px solid black;
   border-radius: 5px;
+}
+
+.online-button {
+  height: 50px;
+  width: 50px;
+  color: #fff;
+  border-radius: 25px;
+  float: right;
+  margin-top: 10px;
+}
+
+.letters {
+  background-color: #DCDCDC;
+  font-size: 24px;
+  font-weight: normal;
+  font-family: Helvetica !important;
+  padding: 8px 0px 0px 14px;
+}
+
+.name {
+  background-color: #9AFF81;
+  text-align: center;
+  width: 90px;
+  font-size: 18px;
+  font-weight: normal;
+  padding: 0px 0px 0px 0px;
+}
+
+.message-font {
+  display: block;
+  text-align: center;
+  font-size: 0.6em;
+  font-weight: normal;
+}
+
+.plus {
+  background-color: #72FF17;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 8px 0px 0px 15px;
+}
+
+.minus {
+  background-color: #FF6C6C;
+  font-size: 40px;
+  padding: 0px 0px 0px 18px;
 }
 
 .user-card {
   padding: 10px 10px 10px 10px;
-  width: 180px;
+  width: 100px;
   background-color: #fff;
   border: 1px solid #fff;
   border-radius: 5px;
@@ -39,74 +99,115 @@ h5 {
 
 
 .connection-box {
-  border: 1px solid black;
-  border-radius: 20px;
-  width: 300px;
-  padding: 45px;
-
+  width: 315px;
+  padding: 0px 15px 45px 15px;
 }
 
-.chat-box {
+  /* ************ MESSAGE STYLINGS *********** */
+
+.all-message-container {
   position: fixed;
-  right: 15px;
+  padding: 15px 15px 0px 0px;
+  left: 0px;
+  bottom: 0px;
+  width: calc(96% - 75px);
+}
+
+.message-container {
+  display: inline-block;
+  margin-left: 10px;
   bottom: 15px;
-  width: 400px;
-  height: 400px;
-  padding: 5px;
-  background-color: #DBDADB;
-  border: 1px solid black;
+  width: 200px;
+  height: 300px;
+  background-color: #fff;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  -webkit-box-shadow: 0px 0px 14px 9px rgba(220,220,220,1);
-  -moz-box-shadow: 0px 0px 14px 9px rgba(220,220,220,1);
-  box-shadow: 0px 0px 14px 9px rgba(220,220,220,1);
+  -webkit-box-shadow: 0px 0px 14px 5px rgba(220,220,220,1);
+  -moz-box-shadow: 0px 0px 14px 5px rgba(220,220,220,1);
+  box-shadow: 0px 0px 14px 5px rgba(220,220,220,1);
+}
+
+.message-header {
+  position: relative;
+  background-color: #DCDCDC;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  list-style: none;
+  font-size: 0.8em;
+  font-family: arial;
+  font-weight: bold;
+  color: #fff;
+  width: 200px !important;
+  padding: 5px;
+  text-align: center;
+}
+
+.message-header.active {
+  background-color: #5AD7FF;
 }
 
 .message-box {
+  position: relative;
   background-color: white;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
-  height: 325px;
+  height: 230px;
   padding: 5px;
+  overflow-y: scroll;
 }
 
-.message-box li {
+
+.message {
+  position: relative;
   list-style: none;
-  border-radius: 10px;
-  padding: 5px;
-  width: 60%;
-  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  max-width: 140px;
+  margin-top: 5px;
+  font-size: 0.8em;
+  word-break: break-all;
+  clear: both;
 }
 
 .message-other {
   background-color: #DBDADB;
-  right: 0px;
-  margin-left: -25px;
+  float: left;
   color: black;
 }
 
 .message-self {
-  background-color: #76AEFF;
-  right: 0px;
-  margin-left: 100px;
+  background-color: #5AD7FF;
+  float: right;
   color: white;
 }
 
-.input-box {
-  background-color: white;
-  padding: 20px 20px 19px 35px;
-  height: 25px;
-  bottom: 0px;
-  border-top: 1px solid #DCDCDC;
+.input-box form {
+  margin-top: 5px;
 }
 
 .input-box input {
+  position: relative;
+  border-top: 1px solid #DCDCDC;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  margin-top: -10px;
   height: 25px;
-  width: 75%;
+  width: 196px;
 }
 
-.input-box button {
-  border-top: 1px solid #DCDCDC;
-  height: 30px;
-  width: 20%;
+.message-box::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.message-box::-webkit-scrollbar {
+  width: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.message-box::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+  background-color: #5AD7FF;
 }

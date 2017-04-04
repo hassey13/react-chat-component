@@ -25,6 +25,7 @@ io.on('connection', function(socket){
   socket.on('userOnline', function(msg){
     io.emit('userOnline', msg)
     console.log(msg.name + ' connected!')
+
     users.push( { name: msg.name } )
     io.emit('connectedUsers', users)
     readUsers()
@@ -33,13 +34,14 @@ io.on('connection', function(socket){
   socket.on('userOffline', function(msg){
     io.emit('userOffline', msg)
     console.log(msg.name + ' disconnected!')
+    
     users = users.filter( user => msg.name !== user.name )
     readUsers()
   })
 
   socket.on('chat message', function(msg){
     io.emit('chat message', msg)
-    console.log('name: ' + msg.sender + ' - message: ' + msg.content)
+    console.log(msg)
   })
 })
 

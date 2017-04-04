@@ -1,29 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addMessage } from '../actions/messageActions'
-
 class Messages extends React.Component {
 
-  constructor() {
-    super()
-    this.messageRecieve = this.messageRecieve.bind(this)
-  }
-
-  componentDidMount(){
-    this.props.socket.on('chat message', this.messageRecieve)
-  }
-
-  messageRecieve( message ) {
-    this.props.addMessage( message )
-  }
-
   render() {
+    const user = this.props.user
+    const recipient = this.props.recipient
     const messages = this.props.messages
+
     return (
-      <div className="message-box">
-        <ul>
-          { messages.map(( message, i ) => <li key={ i } className='message-self'> { message.content }</li> ) }
+      <div >
+        <ul className='message-box'>
+          { messages.map(( message, i ) => {
+              if ( message.recipient === recipient.name && message.sender === user.name ) {
+                return <li key={ i } className='message message-self'> { message.content }</li>
+              }
+              else if ( message.sender === recipient.name && message.recipient === user.name ) {
+                return <li key={ i } className='message message-other'> { message.content }</li>
+              }
+            })
+          }
         </ul>
       </div>
     )
@@ -36,13 +32,4 @@ function mapStateToProps (state){
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    addMessage: function(message){
-      let action = addMessage(message)
-      dispatch( action )
-    }
-  }
-}
-
-export default connect( mapStateToProps, mapDispatchToProps )( Messages )
+export default connect( mapStateToProps, null )( Messages )

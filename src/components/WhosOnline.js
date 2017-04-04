@@ -1,25 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import OnlineUserCard from './OnlineUserCard'
+import OnlineUserList from './OnlineUserList'
+import OnlineButton from './OnlineButton'
+
 import { addUser, removeUser } from '../actions/usersActions'
 
 class WhosOnline extends React.Component {
+
+  constructor() {
+    super()
+    this.state = {
+      toggle: false
+    }
+  }
 
   componentDidMount() {
     this.props.socket.on('userOnline', this.props.addUser )
     this.props.socket.on('userOffline', this.props.removeUser )
   }
 
+  handleClick() {
+    this.setState( { toggle: !(this.state.toggle) } )
+  }
+
   render() {
-    const users = ["Eric","Alanna"]
+    const users = this.props.users
+    const status = this.state.toggle
 
     return (
       <div className="whos-online-container">
-        <h5>Online</h5>
-        <div>
-          { users.map( (user, i) => <OnlineUserCard key={ i } user={ user } /> )}
-        </div>
+        <div className='hover' onClick={ this.handleClick.bind( this ) }><OnlineButton status={status} /></div>
+        <OnlineUserList  status={ status } users={ users } />
       </div>
     )
   }

@@ -1,29 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addConnection } from '../actions/index'
+
+import { addConnection } from '../actions/connectionActions'
+import { addCurrentUser, removeCurrentUser } from '../actions/userActions'
 
 class ConnectForm extends React.Component {
 
   constructor(){
     super()
-    this.state = {name: '', connected: false}
+    this.state = { name: '', connected: false }
   }
 
-  componentDidMount() {
-    this.props.socket.on('userOnline', function() {
-      console.log('connected')
+  componentWillMount() {
+    window.addEventListener("beforeunload", (event) => {
+      if ( this.state.connected) {
+        this.props.socket.emit('userOffline', this.state )
+      }
     })
-
-    this.props.socket.on('userOffline', function() {
-      console.log('disconnected')
-    })
-  }
-
-  componentWillUnmount() {
-    if ( this.state.connected) {
-      this.props.socket.emit('userOffline', { name: this.state.name } )
-      this.setState( { connected: false } )
-    }
   }
 
   handleInputChange(event){
@@ -36,19 +29,21 @@ class ConnectForm extends React.Component {
     event.preventDefault()
     this.props.socket.emit('userOnline', this.state )
     this.setState( { connected: true } )
+    this.props.addCurrentUser( { name: this.state.name } )
   }
 
   handleClick(){
     this.props.socket.emit('userOffline', this.state )
     this.setState( { connected: false } )
+    this.props.removeCurrentUser( { name: this.state.name } )
   }
 
   render() {
 
-    if (this.state.connected) {
+    if ( this.state.connected ) {
       return (
-        <div>
-          <h2>Connected as { this.state.name }</h2>
+        <div className="connection-box">
+          <h3>Connected as { this.state.name }</h3>
           <button onClick={ this.handleClick.bind( this ) }>Disconnect</button>
         </div>
       )
@@ -76,6 +71,14 @@ function mapDispatchToProps(dispatch){
   return {
     addConnection: function(message){
       let action = addConnection(message)
+      dispatch( action )
+    },
+    addCurrentUser: function(user){
+      let action = addCurrentUser(user)
+      dispatch( action )
+    },
+    removeCurrentUser: function(user){
+      let action = removeCurrentUser(user)
       dispatch( action )
     }
   }
