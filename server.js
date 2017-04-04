@@ -13,22 +13,27 @@ function readUsers() {
     return false
   }
   console.log("Below are the connected users:")
-  users.map( (user,i) => console.log(`${user}`) )
+  users.map( (user,i) => console.log(`${user.name}`) )
 }
 
 io.on('connection', function(socket){
 
+  socket.on('sync', function(msg){
+    io.emit('sync', {users: users, token: msg.token})
+  })
+
   socket.on('userOnline', function(msg){
     io.emit('userOnline', msg)
     console.log(msg.name + ' connected!')
-    users.push(msg.name)
+    users.push( { name: msg.name } )
+    io.emit('connectedUsers', users)
     readUsers()
   })
 
   socket.on('userOffline', function(msg){
     io.emit('userOffline', msg)
     console.log(msg.name + ' disconnected!')
-    users = users.filter( name => msg.name !== name )
+    users = users.filter( user => msg.name !== user.name )
     readUsers()
   })
 
