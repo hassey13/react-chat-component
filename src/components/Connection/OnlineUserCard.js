@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addRecipient } from '../actions/recipientsActions'
+import { addActiveChat } from '../actions/activeChatsActions'
 
 class OnlineUserCard extends React.Component {
 
@@ -13,7 +13,7 @@ class OnlineUserCard extends React.Component {
   }
 
   handleClick( user ) {
-    this.props.addRecipient( { name: user.name } )
+    this.props.addActiveChat( { name: user.name } )
   }
 
   handleMouseEnter() {
@@ -50,8 +50,8 @@ class OnlineUserCard extends React.Component {
 
 function mapDispatchToProps(dispatch){
   return {
-    addRecipient: function( recipient ){
-      let action = addRecipient( recipient )
+    addActiveChat: function( recipient ){
+      let action = addActiveChat( recipient )
       dispatch( action )
     }
   }

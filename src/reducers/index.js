@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 
 import messagesReducer from './messagesReducer'
 import socketReducer from './socketReducer'
-import recipientsReducer from './recipientsReducer'
+import activeChatsReducer from './activeChatsReducer'
 import usersReducer from './usersReducer'
 import userReducer from './userReducer'
 
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   socket: socketReducer,
   user: userReducer,
   users: usersReducer,
-  recipients: recipientsReducer
+  activeChats: activeChatsReducer
 })
 
 export default rootReducer

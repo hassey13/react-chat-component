@@ -25,11 +25,11 @@ class MessagesContainer extends React.Component {
   render() {
     const socket = this.props.socket
     const user = this.props.user
-    const recipients = this.props.recipients
+    const activeChats = this.props.activeChats
 
     return (
       <div className="all-message-container">
-        { recipients.map(( recipient, i ) => <IndividualMessageContainer key={ i } recipient={ recipient } user={ user } socket={ socket } /> ) }
+        { activeChats.map(( recipient, i ) => <IndividualMessageContainer key={ i } recipient={ recipient } user={ user } socket={ socket } /> ) }
       </div>
     )
   }
@@ -38,7 +38,7 @@ class MessagesContainer extends React.Component {
 function mapStateToProps (state){
   return {
     users: state.users,
-    recipients: state.recipients,
+    activeChats: state.activeChats,
     user: state.user
   }
 }
