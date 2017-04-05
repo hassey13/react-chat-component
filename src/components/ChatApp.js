@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import MessagesContainer from './MessagesContainer'
-import ConnectForm from './ConnectForm'
-import WhosOnline from './WhosOnline'
+import MessagesContainer from './Messaging/MessagesContainer'
+import ConnectForm from './Connection/ConnectForm'
+import WhosOnline from './Connection/WhosOnline'
 
 import { addUsers } from '../actions/usersActions'
 import { addSocketConnection } from '../actions/socketActions'

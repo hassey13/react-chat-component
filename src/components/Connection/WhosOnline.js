@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import OnlineUserList from './OnlineUserList'
 import OnlineButton from './OnlineButton'
 
-import { addUser, removeUser } from '../actions/usersActions'
+import { addUser, removeUser } from '../../actions/usersActions'
 
 class WhosOnline extends React.Component {
 

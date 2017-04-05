@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import IndividualMessageContainer from './IndividualMessageContainer'
 
-import { addMessage } from '../actions/messageActions'
+import { addMessage } from '../../actions/messageActions'
 
 class MessagesContainer extends React.Component {
 

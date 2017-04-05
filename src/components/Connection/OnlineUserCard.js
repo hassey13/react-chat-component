@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addActiveChat } from '../actions/activeChatsActions'
+import { addActiveChat } from '../../actions/activeChatsActions'
 
 class OnlineUserCard extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addMessage } from '../actions/messageActions'
+import { addMessage } from '../../actions/messageActions'
 
 class ChatForm extends React.Component {
   constructor(){

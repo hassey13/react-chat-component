@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addCurrentUser, removeCurrentUser } from '../actions/userActions'
+import { addCurrentUser, removeCurrentUser } from '../../actions/userActions'
 
 class ConnectForm extends React.Component {
 
