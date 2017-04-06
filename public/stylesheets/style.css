@@ -55,18 +55,18 @@ ul {
 }
 
 .name {
-  background-color: #9AFF81;
+  background-color: #009DE4;
   text-align: center;
   width: 90px;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: normal;
-  padding: 0px 0px 0px 0px;
+  padding: 5px 0px 0px 0px;
 }
 
 .message-font {
   display: block;
   text-align: center;
-  font-size: 0.6em;
+  font-size: 0.8em;
   font-weight: normal;
 }
 
@@ -132,14 +132,45 @@ ul {
   background-color: #DCDCDC;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  list-style: none;
+  width: 200px !important;
+  padding: 5px 0 5px 0;
+  text-align: center;
+}
+
+.message-header-text {
+  position: relative;
+  display: inline-block;
   font-size: 0.8em;
   font-family: arial;
   font-weight: bold;
   color: #fff;
-  width: 200px !important;
-  padding: 5px;
+  margin-left: 30px;
+  width: 120px !important;
   text-align: center;
+}
+
+.message-header-min {
+  border-radius: 10px;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  padding: 1px 0px 0px 0px;
+  font-size: 1em;
+  font-family: arial;
+  font-weight: bold;
+  color: #fff;
+}
+
+.message-header-close {
+  border-radius: 10px;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  padding: 1px 2px 0px 0px;
+  font-size: 0.8em;
+  font-family: arial;
+  font-weight: normal;
+  color: #fff;
 }
 
 .message-header.active {
