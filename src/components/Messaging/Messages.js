@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Message from './Message'
+
 class Messages extends React.Component {
 
   render() {
@@ -11,15 +13,7 @@ class Messages extends React.Component {
     return (
       <div >
         <ul className='message-box'>
-          { messages.map(( message, i ) => {
-              if ( message.recipient === recipient.name && message.sender === user.name ) {
-                return <li key={ i } className='message message-self'> { message.content }</li>
-              }
-              else if ( message.sender === recipient.name && message.recipient === user.name ) {
-                return <li key={ i } className='message message-other'> { message.content }</li>
-              }
-            })
-          }
+          { messages.map(( message, i ) => <Message key={ i } user={ user } recipient={ recipient } message={ message } /> ) }
         </ul>
       </div>
     )
