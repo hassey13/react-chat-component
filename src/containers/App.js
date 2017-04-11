@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import MessagesContainer from './Messaging/MessagesContainer'
-import ConnectForm from './Connection/ConnectForm'
-import WhosOnline from './Connection/WhosOnline'
+import Heading from '../components/Heading'
+import MessagesContainer from '../components/Messaging/MessagesContainer'
+import ConnectForm from '../components/Connection/ConnectForm'
+import WhosOnline from '../components/Connection/WhosOnline'
 
 import { addUsers } from '../actions/usersActions'
 import { addSocketConnection } from '../actions/socketActions'
@@ -12,7 +13,7 @@ import '../../public/stylesheets/style.css'
 
 const io = require('socket.io-client')
 
-class ChatApp extends Component {
+class App extends Component {
 
   componentDidMount(){
     const socket = io.connect('http://localhost:4000')
@@ -37,8 +38,8 @@ class ChatApp extends Component {
     }
 
     return (
-      <div>
-        <h1>Welcome to Chat App!</h1>
+      <div className='App'>
+        <Heading />
 
         < ConnectForm socket={ socket } />
 
@@ -78,4 +79,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )( ChatApp )
+export default connect( mapStateToProps, mapDispatchToProps )( App )
